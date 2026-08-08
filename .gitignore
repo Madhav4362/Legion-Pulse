@@ -1,0 +1,38 @@
+# Build results
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+publish/
+
+# Executables & Compiled Binaries
+*.exe
+*.dll
+*.pdb
+*.zip
+*.7z
+*.rar
+*.tar
+*.gz
+
+# Visual Studio & IDE files
+.vs/
+*.user
+*.userosscache
+*.suo
+*.sln.docstates
+*.userprefs
+*.workspace
+*.vsp
+*.vspx
+
+# Operating System files
+Thumbs.db
+Desktop.ini
+.DS_Store
+*.tmp
+*.bak
+
+# Packages & Dependencies
+*.nupkg
+packages/

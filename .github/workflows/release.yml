@@ -1,0 +1,39 @@
+name: Build & Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+
+jobs:
+  build-and-release:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+
+      - name: Restore Dependencies
+        run: dotnet restore LegionPulse.csproj
+
+      - name: Publish Release Executable
+        run: dotnet publish LegionPulse.csproj -c Release -o ./publish -p:PublishSingleFile=true -p:SelfContained=false
+
+      - name: Compress Release Package
+        run: Compress-Archive -Path ./publish/LegionPulse.exe -DestinationPath ./LegionPulse-win64.zip
+
+      - name: Upload Release Artifacts
+        uses: softprops/action-gh-release@v2
+        if: startsWith(github.ref, 'refs/tags/')
+        with:
+          files: |
+            LegionPulse-win64.zip
+            ./publish/LegionPulse.exe
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

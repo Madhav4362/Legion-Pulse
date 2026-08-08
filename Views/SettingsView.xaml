@@ -1,0 +1,34 @@
+<UserControl x:Class="LegionPulse.Views.SettingsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             UseLayoutRounding="True">
+    <Grid Style="{StaticResource PageRoot}">
+        <Grid.RowDefinitions><RowDefinition Height="86" /><RowDefinition Height="198" /></Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" VerticalAlignment="Center">
+            <TextBlock Text="Settings" Style="{StaticResource PageTitleText}" />
+            <TextBlock Text="Customize the appearance of Legion Pulse." Style="{StaticResource PageSubtitleText}" Margin="0,4,0,0" />
+        </StackPanel>
+
+        <Border Grid.Row="1" Style="{StaticResource CardBorder}">
+            <Grid Margin="30,25"><Grid.RowDefinitions><RowDefinition Height="58" /><RowDefinition Height="*" /></Grid.RowDefinitions>
+                <StackPanel><TextBlock Text="Appearance" Style="{StaticResource SectionTitleText}" /><TextBlock Text="Choose how Legion Pulse looks." Style="{StaticResource PageSubtitleText}" Margin="0,2,0,0" /></StackPanel>
+                <Grid Grid.Row="1"><Grid.ColumnDefinitions><ColumnDefinition Width="306" /><ColumnDefinition Width="370" /><ColumnDefinition Width="*" /></Grid.ColumnDefinitions>
+                    <Border Height="54" BorderBrush="{StaticResource BorderBrush}" BorderThickness="1" CornerRadius="14" VerticalAlignment="Top">
+                        <Grid><Grid.ColumnDefinitions><ColumnDefinition /><ColumnDefinition /></Grid.ColumnDefinitions>
+                            <Button Grid.Column="0" Command="{Binding SelectAppearanceCommand}" CommandParameter="Dark" BorderThickness="0" Cursor="Hand">
+                                <Button.Style><Style TargetType="Button" BasedOn="{StaticResource ModeSegmentButton}"><Setter Property="BorderThickness" Value="0" /><Setter Property="Height" Value="52" /><Setter Property="MinWidth" Value="152" /><Setter Property="BorderBrush" Value="Transparent" /><Setter Property="Background" Value="Transparent" /><Setter Property="Template"><Setter.Value><ControlTemplate TargetType="Button"><Border x:Name="Root" Background="{TemplateBinding Background}" CornerRadius="13,0,0,13"><ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" /></Border><ControlTemplate.Triggers><Trigger Property="IsMouseOver" Value="True"><Setter TargetName="Root" Property="Background" Value="{StaticResource SurfaceHoverBrush}" /></Trigger></ControlTemplate.Triggers></ControlTemplate></Setter.Value></Setter><Style.Triggers><DataTrigger Binding="{Binding IsDarkSelected}" Value="True"><Setter Property="Background" Value="{StaticResource PrimaryBrush}" /><Setter Property="Foreground" Value="White" /></DataTrigger></Style.Triggers></Style></Button.Style>
+                                <StackPanel Orientation="Horizontal"><TextBlock Text="&#xE708;" FontFamily="{StaticResource IconFont}" FontSize="16" Margin="0,0,8,0" /><TextBlock Text="Dark" FontFamily="{StaticResource AppFont}" FontSize="16" FontWeight="SemiBold" /></StackPanel>
+                            </Button>
+                            <Button Grid.Column="1" Command="{Binding SelectAppearanceCommand}" CommandParameter="Light" BorderThickness="0" Cursor="Hand">
+                                <Button.Style><Style TargetType="Button" BasedOn="{StaticResource ModeSegmentButton}"><Setter Property="BorderThickness" Value="0" /><Setter Property="Height" Value="52" /><Setter Property="MinWidth" Value="152" /><Setter Property="BorderBrush" Value="Transparent" /><Setter Property="Background" Value="Transparent" /><Setter Property="Template"><Setter.Value><ControlTemplate TargetType="Button"><Border x:Name="Root" Background="{TemplateBinding Background}" CornerRadius="0,13,13,0"><ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" /></Border><ControlTemplate.Triggers><Trigger Property="IsMouseOver" Value="True"><Setter TargetName="Root" Property="Background" Value="{StaticResource SurfaceHoverBrush}" /></Trigger></ControlTemplate.Triggers></ControlTemplate></Setter.Value></Setter><Style.Triggers><DataTrigger Binding="{Binding IsLightSelected}" Value="True"><Setter Property="Background" Value="{StaticResource PrimaryBrush}" /><Setter Property="Foreground" Value="White" /></DataTrigger></Style.Triggers></Style></Button.Style>
+                                <StackPanel Orientation="Horizontal"><TextBlock Text="&#xE706;" FontFamily="{StaticResource IconFont}" FontSize="16" Margin="0,0,8,0" /><TextBlock Text="Light" FontFamily="{StaticResource AppFont}" FontSize="16" FontWeight="SemiBold" /></StackPanel>
+                            </Button>
+                        </Grid>
+                    </Border>
+                    <StackPanel Grid.Column="1" Margin="30,0,0,0"><TextBlock Text="PREVIEW" Style="{StaticResource EyebrowText}" Margin="0,0,0,7" /><Border Width="318" Height="69" CornerRadius="11" Background="{DynamicResource AppBackgroundBrush}" BorderBrush="{DynamicResource BorderBrush}" BorderThickness="1"><Grid Margin="16,10"><Grid.ColumnDefinitions><ColumnDefinition Width="21" /><ColumnDefinition Width="1" /><ColumnDefinition Width="*" /></Grid.ColumnDefinitions><Border Background="{DynamicResource SidebarBackgroundBrush}" CornerRadius="5" /><Border Grid.Column="1" Background="{DynamicResource BorderBrush}" Margin="7,0" /><StackPanel Grid.Column="2" Margin="9,3,0,0"><Grid Height="11" HorizontalAlignment="Left"><Border Width="43" Background="{DynamicResource SurfaceBrush}" CornerRadius="3" /><Border Width="33" Background="{DynamicResource PrimaryMutedBrush}" CornerRadius="3" HorizontalAlignment="Right" /></Grid><Border Width="90" Height="11" Background="{DynamicResource SurfaceBrush}" CornerRadius="3" Margin="0,5,0,0" HorizontalAlignment="Left" /><Border Width="33" Height="11" Background="{DynamicResource PrimaryMutedBrush}" CornerRadius="3" Margin="0,5,0,0" HorizontalAlignment="Left" /></StackPanel><Ellipse Grid.Column="2" Width="14" Height="14" Fill="{DynamicResource PrimaryBrush}" HorizontalAlignment="Right" VerticalAlignment="Center" /></Grid></Border></StackPanel>
+                    <TextBlock Grid.Column="2" Text="More customization options coming in future updates." Style="{StaticResource PageSubtitleText}" FontSize="13" VerticalAlignment="Center" Margin="7,18,0,0" />
+                </Grid>
+            </Grid>
+        </Border>
+    </Grid>
+</UserControl>
